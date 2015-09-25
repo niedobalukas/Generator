@@ -13,20 +13,20 @@ import weka.core.FastVector;
  *
  * @author Lukas
  */
-public enum Shop implements ARFFParsable {
+public enum Region implements ARFFParsable {
     
-    Shop_1,Shop_2,Shop_3;
     
-        
+        A,B,C;
+    
+
     @Override
     public FastVector getARFFParamNominalValues() {
         FastVector retVal = new FastVector();
-        for(Shop val:Shop.values())
+        for(Region val:Region.values())
         {
             retVal.addElement(val.toString());       
         }
-        return retVal;
-    }
+        return retVal;    }
 
     @Override
     public double getARFFParamValue() {
@@ -40,7 +40,9 @@ public enum Shop implements ARFFParsable {
 
     @Override
     public String getARFFParamName() {
-        return new String("Shop");
+        return new String("Region");
     }
-
+ 
+   
+    
 }

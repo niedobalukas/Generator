@@ -13,15 +13,23 @@ import weka.core.FastVector;
  *
  * @author Lukas
  */
-public enum Shop implements ARFFParsable {
+public enum LegalStatus implements ARFFParsable {
     
-    Shop_1,Shop_2,Shop_3;
     
+        Legal_Entity,Natural_Person;
         
+        
+    public static LegalStatus getRandom(int age){
+       double rndVal = Math.random();
+            if(rndVal <=0.3) return Legal_Entity;
+            else             return Natural_Person;
+        
+    }
+
     @Override
     public FastVector getARFFParamNominalValues() {
         FastVector retVal = new FastVector();
-        for(Shop val:Shop.values())
+        for(LegalStatus val:LegalStatus.values())
         {
             retVal.addElement(val.toString());       
         }
@@ -40,7 +48,7 @@ public enum Shop implements ARFFParsable {
 
     @Override
     public String getARFFParamName() {
-        return new String("Shop");
+        return new String("LegalStatus");
     }
-
+    
 }
