@@ -35,7 +35,7 @@ public class Generator {
         try{
             /*CSVParser par=new CSVParser(new String[]{"jedna","dva","tri"}, "c:\\myC");
             for(int i=0 ;i<20 ;i++) par.append(new Object[]{i, 'a', "string"});*/  
-            CSVParser par=new CSVParser(new String[]{"PRICE","AGE","SEX","MARTIAL_STATUS","TITLE"},"c:\\Users\\Lukas\\generated");
+            CSVParser par=new CSVParser(new String[]{"PRICE","AGE","SEX","MARTIAL_STATUS","TITLE","LEGAL_STATUS","REGION","SHOP"},"c:\\Users\\Lukas\\generated");
             for(Trade trade:trades) par.append(trade.getObject());
             par.close();
         }catch(IOException e){
@@ -45,10 +45,13 @@ public class Generator {
         Age age = new Age(1);
         Sex sex = Sex.getRandom();
         Title title = Title.Bc;
+        LegalStatus legalStatus = LegalStatus.getRandom();
+        Region region = Region.getRandom();
+        Shop shop = Shop.getRandom();
         
         MartialStatus martial = MartialStatus.DIVORCED;
   
-        ARFFParser arff = new ARFFParser(new Object[]{price,age,sex,martial,title});
+        ARFFParser arff = new ARFFParser(new Object[]{price,age,sex,martial,title,legalStatus,region,shop});
         for(Trade trade:trades) arff.appendData(trade.getArff());
         //System.out.println(arff);
         arff.SaveToFile(null);
